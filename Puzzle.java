@@ -9,26 +9,27 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.util.ArrayList;
 
-public class Puzzle extends Area{
-	public boolean isSolved;
-	public Image image2;
-	public Puzzle(Graphics g, String filename, int index, String solvedFilename){
-		super(g,filename, index);
-    	isSolved = false;
-    	image2 = loadArea(g, solvedFilename);
+public class Puzzle extends Area{  //our puzzle class is a child class of area with a few differences
+	public boolean isSolved;  //boolean for if solved
+	public Image image2;  //image for solved image
+
+	public Puzzle(Graphics g, String filename, int index, String solvedFilename){  //constructor takes in similar arguments to second area constructor
+		super(g,filename, index);  //calls area constructor without solvedFilename
+    	isSolved = false;  //sets isSolved to false
+    	image2 = loadArea(g, solvedFilename);  //loads up the area associated with the solved image
 
 	}
 
 	@Override
-	public void puzzleSolved(){
-		image = image2;
+	public void puzzleSolved(){  //if the puzzle is solved we do something different than we do in area
+		image = image2;  //we set our image equal to a different image which is similar
 		isSolved = true;
-		for(int i = 0; i<rect.size()-1; i++){
+		for(int i = 0; i<rect.size()-1; i++){  //however we get rid of all of the hitboxes except for the bottom one to prevent anything from getting sticky
 			rect.remove(i);
 		}
 	}
 
-	public boolean getSolved(){
+	public boolean getSolved(){  //returns isSolved
 		return isSolved;
 	}
 }
