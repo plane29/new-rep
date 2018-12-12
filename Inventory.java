@@ -13,21 +13,21 @@ import java.util.ArrayList;
 
 
 public class Inventory extends JPanel{
-	Font arial = new Font("Arial", Font.BOLD, 30);
-	int x;
-	int y;
-	int width;
-	int height;
-	Image pick;
-	Image lock;
-	Graphics g;
-	boolean pickSolved = false;
-	boolean lockSolved = false;
+	Font arial = new Font("Arial", Font.BOLD, 30);  //loads in a font to draw the word inventory
+	int x;  //x position
+	int y;  //y position
+	int width;  //width of screen
+	int height;  //height of screen
+	Image pick;  //image for the pick which can be added to your inventory
+	Image lock;  //image for lock which can be added to your inventory
+	Graphics g;  //instance of graphics
+	boolean pickSolved = false;  //boolean to track if the user has the pick
+	boolean lockSolved = false;  //boolean to track if the user has the lock
 
-	public Inventory(int initWidth, int initHeight, String filename, String filename2){
-		pick = loadInventory(g, filename);
-		lock = loadInventory(g, filename2);
-		width = initWidth;
+	public Inventory(int initWidth, int initHeight, String filename, String filename2){  //constructor for inventory which takes in width, height and width and two filenames for the two images
+		pick = loadInventory(g, filename);  //sets image of pick to first string sent in
+		lock = loadInventory(g, filename2);  //sets image for lock equal to second
+		width = initWidth;  //sets height and width equal to those sent in
 		height = initHeight;
 	}
 
@@ -44,18 +44,18 @@ public class Inventory extends JPanel{
 
 
 
-	public void drawInventory(Graphics g){
-		g.setFont(arial);
-		FontMetrics metrics = g.getFontMetrics(arial);
-		g.setColor(Color.WHITE);
-		g.fillRect(width/9,height-height/6,metrics.stringWidth("Inventory"),height/20);
-		g.setColor(Color.BLACK);
+	public void drawInventory(Graphics g){  //draws the inventory to the screen
+		g.setFont(arial);  //sets the font 
+		FontMetrics metrics = g.getFontMetrics(arial);  //imports the metrics for that font
+		g.setColor(Color.WHITE);  //sets color to white
+		g.fillRect(width/9,height-height/6,metrics.stringWidth("Inventory"),height/20);  //draws a box on which we will write inventory
+		g.setColor(Color.BLACK);  //draws the word inventory
 		g.drawString("Inventory", width/9, height-height/8);
-		if(pickSolved){
-			g.drawImage(pick, 100, height-62, 112, 57, null);
+		if(pickSolved){  //if the user has the pick draw the pick
+			g.drawImage(pick,(int)(100*(width/960.0)),(int)(578*(height/640.0)),(int)(112*(width/960.0)), (int)(57* (height/640.0)), null);
 		}
-		if(lockSolved){
-			g.drawImage(lock, 200, height - 65, 90, 48, null);
+		if(lockSolved){  //if the user has the lock draw the lock
+			g.drawImage(lock, (int)(200*(width/960.0)),(int)(575*(height/640.0)),(int)(90*(width/960.0)), (int)(48* (height/640.0)), null);
 		}
 	}
 
