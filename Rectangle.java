@@ -6,27 +6,25 @@ import java.awt.Dimension;
 
 
 public class Rectangle extends JPanel{
-	public int x;
-	public int y;
-	public int width;
-	public int height;
-	public int centerX;
-	public int centerY;
+	public int x;  //x location
+	public int y;  //y location
+	public int width;  //width of rectangle
+	public int height;  //height of rectangle
+	public int centerX;  //center x of rectangle
+	public int centerY;  //center y of rectangle
 
-	public Rectangle(int inX, int inY, int inWidth, int inHeight){
-		x=inX;
+	public Rectangle(int inX, int inY, int inWidth, int inHeight){  //main purpose of class is to create hitboxes
+		x=inX;  //set these equal to arguments sent in
 		y=inY;
 		width=inWidth;
 		height=inHeight;
 	}
 
-	public void rectangleDraw(Graphics g){
-		g.fillRect(x,y,width,height);
-	}
 
-	public boolean isIn(Pair point){ //main inspiration came from MonteCarlo
+
+	public boolean isIn(Pair point){ //main inspiration came from MonteCarlo basically checks if a pair is within a rectangle
 		boolean in;
-		if((point.x<=x+width && point.x>=x) && (point.y<=y+height && point.y>=y)){
+		if((point.x<=x+width && point.x>=x) && (point.y<=y+height && point.y>=y)){  //must be both within the x range and the y range 
 			in = true;
 		}
 		else{
